@@ -3,10 +3,8 @@ package br.com.projetocrud.crud.controller;
 import br.com.projetocrud.crud.model.PersonModel;
 import br.com.projetocrud.crud.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,6 +32,25 @@ public class PersonController {
     @GetMapping
     public List<PersonModel> findAll(){
         return service.findAll();
+    }
+
+    /* METODO SALVAR */
+    @PostMapping
+    public PersonModel save(@RequestBody PersonModel personModel){
+        return service.save(personModel);
+    }
+
+    /* MÉTODO UPDATE */
+    @PutMapping
+    public PersonModel update(@RequestBody PersonModel personModel) throws Exception{
+        return service.update(personModel);
+    }
+
+    /* MÉTODO DELETE */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") long id) throws Exception{
+        service.delete(id);
+        return ResponseEntity.ok().build();
     }
 
 }
