@@ -36,14 +36,14 @@ public class PersonControllerV2 {
 
     /* METODO SALVAR */
     @PostMapping
-    public PersonModelV2 save(@RequestBody PersonModelV2 PersonModelV2){
-        return service.save(PersonModelV2);
+    public PersonModelV2 save(@RequestBody PersonModelV2 personModel){
+        return service.save(personModel);
     }
 
     /* MÉTODO UPDATE */
     @PutMapping
-    public PersonModelV2 update(@RequestBody PersonModelV2 PersonModelV2) throws Exception{
-        return service.update(PersonModelV2);
+    public PersonModelV2 update(@RequestBody PersonModelV2 personModel) throws Exception{
+        return service.update(personModel);
     }
 
     /* MÉTODO DELETE */
