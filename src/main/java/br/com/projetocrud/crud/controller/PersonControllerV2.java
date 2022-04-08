@@ -1,7 +1,7 @@
 package br.com.projetocrud.crud.controller;
 
-import br.com.projetocrud.crud.model.PersonModel;
-import br.com.projetocrud.crud.service.PersonService;
+import br.com.projetocrud.crud.model.PersonModelV2;
+import br.com.projetocrud.crud.service.PersonServiceV2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,38 +12,38 @@ import java.util.List;
 @RestController
 
 /* PONTO DE ENTRADA DO CONTROLADOR */
-@RequestMapping("/person/v1")
+@RequestMapping("/person/v2")
 
-public class PersonController {
+public class PersonControllerV2 {
 
     /* Autowired IRÁ INJETAR AS DEPENDêNCIAS */
     @Autowired
 
     /* DECLARANDO O SERVIÇO service */
-    private PersonService service;
+    private PersonServiceV2 service;
 
     /* QUALQUER REQUISIÇÃO VIA GET PARA /person/<ID> SERÁ DIRECIONADO PARA ESSE MÉTODO */
     @GetMapping("/{id}")
-    public PersonModel findbyId(@PathVariable("id") long id) throws Exception{
+    public PersonModelV2 findbyId(@PathVariable("id") long id) throws Exception{
         return service.findbyId(id);
     }
 
     /* CASO NÃO TENHA NADA DEPOIS DE /<ID> OS DADOS SERÃO LISTADOS NESTE MÉTODO */
     @GetMapping
-    public List<PersonModel> findAll(){
+    public List<PersonModelV2> findAll(){
         return service.findAll();
     }
 
     /* METODO SALVAR */
     @PostMapping
-    public PersonModel save(@RequestBody PersonModel personModel){
-        return service.save(personModel);
+    public PersonModelV2 save(@RequestBody PersonModelV2 PersonModelV2){
+        return service.save(PersonModelV2);
     }
 
     /* MÉTODO UPDATE */
     @PutMapping
-    public PersonModel update(@RequestBody PersonModel personModel) throws Exception{
-        return service.update(personModel);
+    public PersonModelV2 update(@RequestBody PersonModelV2 PersonModelV2) throws Exception{
+        return service.update(PersonModelV2);
     }
 
     /* MÉTODO DELETE */
